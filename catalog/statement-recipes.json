@@ -1,0 +1,82 @@
+{
+  "$comment": "How statements arrive by email. password_format is null until a format is confirmed; never put a real password, account number or address here.",
+  "recipes": [
+    {
+      "institution": "SCB",
+      "statement_kind": "savings account statement (requested in SCB Easy app)",
+      "parser": "scb_savings",
+      "sender_email": null,
+      "subject_hint": "SCB Easy app:Your account statement as requested",
+      "filename_pattern": "^AcctSt_[A-Za-z]{3}\\d{2}\\.pdf$",
+      "password_format": null,
+      "notes": "Requested on demand; one email may hold several accounts' PDFs with the same file name, so match the account number printed in the PDF.",
+      "source": "legacy/v1 integrations/google-apps-script/config.js (via FINC v2 statement_recipes seed)"
+    },
+    {
+      "institution": "KBank",
+      "statement_kind": "savings account e-statement",
+      "parser": "kbank_savings",
+      "sender_email": null,
+      "subject_hint": "E-statement for saving account no. XXX-X-XX<last digits>",
+      "filename_pattern": "^STM_SA\\d+_\\d{2}[A-Z]{3}\\d{2}_\\d{2}[A-Z]{3}\\d{2}\\.pdf$",
+      "password_format": null,
+      "notes": "Requested on demand. File name carries the period start and end (DDMONYY).",
+      "source": "legacy/v1 integrations/google-apps-script/config.js (via FINC v2 statement_recipes seed)"
+    },
+    {
+      "institution": "KBank",
+      "statement_kind": "credit card statement (requested in K PLUS)",
+      "parser": "kbank_card",
+      "sender_email": null,
+      "subject_hint": "K PLUS : Your requested K-Credit Card email statement",
+      "filename_pattern": "^KBGC_\\d+_\\d{6}\\.pdf$",
+      "password_format": null,
+      "notes": "One statement can cover several KBank cards; select one with --card.",
+      "source": "legacy/v1 integrations/google-apps-script/config.js (via FINC v2 statement_recipes seed)"
+    },
+    {
+      "institution": "KKP (Dime Save)",
+      "statement_kind": "savings account e-statement",
+      "parser": "kkp_savings",
+      "sender_email": null,
+      "subject_hint": "จัดส่งรายการเคลื่อนไหวทางบัญชี (e-Statement)",
+      "filename_pattern": "^KKP_STATEMENT_\\d{8}\\.pdf$",
+      "password_format": null,
+      "notes": null,
+      "source": "legacy/v1 integrations/google-apps-script/config.js (via FINC v2 statement_recipes seed)"
+    },
+    {
+      "institution": "CardX",
+      "statement_kind": "credit card e-statement (monthly)",
+      "parser": "cardx_card",
+      "sender_email": null,
+      "subject_hint": "Electronic Statement CardX <card name> <last four>",
+      "filename_pattern": "^\\d{4}[A-Z][a-z]{2}-E\\.pdf$",
+      "password_format": null,
+      "notes": "Sent automatically each cycle; subject names the card product and last four digits.",
+      "source": "legacy/v1 integrations/google-apps-script/config.js (via FINC v2 statement_recipes seed)"
+    },
+    {
+      "institution": "Dime",
+      "statement_kind": "monthly investment statement",
+      "parser": null,
+      "sender_email": "no-reply@dime.co.th",
+      "subject_hint": "| Monthly Statement of",
+      "filename_pattern": null,
+      "password_format": null,
+      "notes": "Investment summary; no parser in this crate.",
+      "source": "legacy/v1 integrations/google-apps-script/config.js (via FINC v2 statement_recipes seed)"
+    },
+    {
+      "institution": "Dime",
+      "statement_kind": "trade confirmation note",
+      "parser": null,
+      "sender_email": null,
+      "subject_hint": "ใบยืนยันการซื้อขาย | Confirmation Note",
+      "filename_pattern": null,
+      "password_format": null,
+      "notes": "One email per fill; trades, not a ledger statement; no parser in this crate.",
+      "source": "legacy/v1 integrations/google-apps-script/config.js (via FINC v2 statement_recipes seed)"
+    }
+  ]
+}

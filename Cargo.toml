@@ -1,0 +1,28 @@
+[package]
+name = "finc-statement-parsers"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.88"
+license = "Apache-2.0"
+description = "Exact-decimal parsers for Thai bank and credit card PDF statements"
+repository = "https://github.com/calavelas/finc-statement-parsers"
+readme = "README.md"
+keywords = ["bank-statement", "pdf", "parser", "thailand", "finance"]
+categories = ["parser-implementations", "finance"]
+
+[[bin]]
+name = "finc-parse"
+path = "src/bin/finc-parse.rs"
+
+[dependencies]
+chrono = { version = "0.4.42", default-features = false, features = ["std"] }
+pdf-extract = "0.12.0"
+regex = "1.11.2"
+rust_decimal = { version = "1.39.0", features = ["serde"] }
+serde = { version = "1.0.219", features = ["derive"] }
+serde_json = "1.0.142"
+thiserror = "2.0.12"
+
+
+[dev-dependencies]
+lopdf = "0.42.0"
